@@ -89,10 +89,9 @@ p { color: var(--muted-foreground); font-size: 1.08rem; line-height: 1.7; }
 
 .site-header { position: absolute; z-index: 50; width: 100%; top: 0; color: var(--primary-foreground); }
 .header-inner { height: 86px; display: grid; grid-template-columns: minmax(0,1fr) auto auto; align-items: center; gap: 38px; }
-.logo { display: inline-flex; align-items: center; gap: 6px; width: max-content; font-size: 1.25rem; font-weight: 900; text-transform: lowercase; }
-.logo span { display: grid; place-items: center; width: 39px; height: 34px; border-radius: 8px; background: var(--primary-foreground); color: var(--primary); font-family: var(--font-display); font-size: 1rem; }
-.logo-inverse { color: var(--primary-foreground); }
-.logo-inverse span { background: var(--cta); color: var(--cta-foreground); }
+.logo { display: inline-flex; align-items: center; width: max-content; }
+.logo img { height: 46px; width: auto; border-radius: 10px; }
+.logo-inverse img { box-shadow: 0 2px 12px rgba(0,0,0,.3); }
 .desktop-nav { display: flex; gap: 30px; font-size: .92rem; font-weight: 700; }
 .desktop-nav a { opacity: .78; transition: opacity .2s; }
 .desktop-nav a:hover { opacity: 1; }
@@ -116,8 +115,7 @@ p { color: var(--muted-foreground); font-size: 1.08rem; line-height: 1.7; }
 .hero-visual { position: relative; min-height: 530px; display: grid; place-items: center; }
 .offer-radar { width: min(100%, 440px); background: var(--card); color: var(--card-foreground); border: 7px solid color-mix(in oklab, var(--primary-foreground) 22%, transparent); border-radius: 28px; overflow: hidden; box-shadow: 0 30px 80px color-mix(in oklab, var(--foreground) 35%, transparent); transform: rotate(2deg); }
 .radar-head { display: flex; justify-content: space-between; align-items: center; background: var(--primary); color: var(--primary-foreground); padding: 17px 20px; }
-.radar-head .logo { font-size: .92rem; }
-.radar-head .logo span { width: 30px; height: 26px; font-size: .76rem; }
+.radar-head .logo img { height: 30px; }
 .radar-head > span { font-size: .7rem; font-weight: 800; }
 .radar-head > span i { display: inline-block; width: 7px; height: 7px; margin-left: 5px; background: var(--cta); border-radius: 50%; }
 .radar-product { display: grid; grid-template-columns: 48% 1fr; gap: 18px; align-items: center; padding: 20px; }
@@ -211,8 +209,7 @@ p { color: var(--muted-foreground); font-size: 1.08rem; line-height: 1.7; }
 .phone-top { display: flex; justify-content: space-between; padding: 6px 16px 12px; font-size: .64rem; font-weight: 900; }
 .phone-top i { width: 75px; height: 18px; border-radius: 10px; background: var(--foreground); }
 .phone-chat-head { display: flex; align-items: center; gap: 10px; padding: 11px; background: var(--primary); color: var(--primary-foreground); border-radius: 11px 11px 0 0; }
-.phone-chat-head .logo { font-size: .8rem; }
-.phone-chat-head .logo span { width: 28px; height: 25px; font-size: .65rem; }
+.phone-chat-head .logo img { height: 26px; }
 .phone-chat-head small { opacity: .7; }
 .phone-chat { display: grid; gap: 10px; padding: 12px 8px; }
 .phone .deal-message { padding: 11px; }

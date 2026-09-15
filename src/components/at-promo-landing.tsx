@@ -33,6 +33,7 @@ import toolsImage from "@/assets/offer-tools.jpg";
 import airfryerImage from "@/assets/offer-airfryer.jpg";
 import speakerImage from "@/assets/offer-speaker.jpg";
 import tumblerImage from "@/assets/offer-tumbler.jpg";
+import logoAsset from "@/assets/at-promo-logo.png.asset.json";
 
 const LINKS = {
   offers: "#receber",
@@ -63,7 +64,7 @@ const categories = [
 ];
 
 function Logo({ inverse = false }: { inverse?: boolean }) {
-  return <a href="#top" aria-label="AT promo — início" className={`logo ${inverse ? "logo-inverse" : ""}`}><span>AT</span> promo</a>;
+  return <a href="#top" aria-label="AT promo — início" className={`logo ${inverse ? "logo-inverse" : ""}`}><img src={logoAsset.url} alt="AT promo" width={512} height={512} /></a>;
 }
 
 function CTA({ children = "QUERO RECEBER AS OFERTAS", className = "", flame = false }: { children?: ReactNode; className?: string; flame?: boolean }) {
