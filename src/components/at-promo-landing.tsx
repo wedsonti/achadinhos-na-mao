@@ -685,7 +685,6 @@ export function ATPromoLanding() {
         <Hero />
         <OfferPreview />
         <CategoriesSection />
-        <ComparisonSection />
         <OffersShowcase />
         <MobileMockup />
         <HowItWorks />
