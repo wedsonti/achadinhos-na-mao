@@ -66,7 +66,7 @@ function Logo({ inverse = false }: { inverse?: boolean }) {
 }
 
 function CTA({ children = "QUERO RECEBER AS OFERTAS", className = "" }: { children?: ReactNode; className?: string }) {
-  return <Button asChild size="lg" className={`cta ${className}`}><a href={LINKS.offers}>{children}<ArrowRight /></a></Button>;
+  return <Button asChild variant="cta" size="lg" className={`cta ${className}`}><a href={LINKS.offers}>{children}<ArrowRight /></a></Button>;
 }
 
 export function Header() {
