@@ -8,9 +8,16 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "AT promo | Ofertas, cupons e achadinhos" },
-      { name: "description", content: "O AT promo garimpa ofertas, cupons e achadinhos para você receber oportunidades direto no celular. É grátis." },
+      {
+        name: "description",
+        content:
+          "O AT promo garimpa ofertas, cupons e achadinhos para você receber oportunidades direto no celular. É grátis.",
+      },
       { property: "og:title", content: "AT promo — A gente garimpa. Você aproveita." },
-      { property: "og:description", content: "Receba ofertas, cupons e achadinhos sem precisar procurar o dia inteiro." },
+      {
+        property: "og:description",
+        content: "Receba ofertas, cupons e achadinhos sem precisar procurar o dia inteiro.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
