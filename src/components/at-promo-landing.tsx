@@ -683,7 +683,6 @@ export function ATPromoLanding() {
       <Header />
       <main>
         <Hero />
-        <ProblemSection />
         <OfferPreview />
         <CategoriesSection />
         <ComparisonSection />
