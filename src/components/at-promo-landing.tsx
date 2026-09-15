@@ -684,7 +684,6 @@ export function ATPromoLanding() {
       <main>
         <Hero />
         <ProblemSection />
-        <SolutionCards />
         <OfferPreview />
         <CategoriesSection />
         <ComparisonSection />
