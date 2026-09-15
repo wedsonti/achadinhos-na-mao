@@ -9,7 +9,7 @@ import {
   Home,
   Menu,
   MessageCircle,
-  PackageSearch,
+  
   Search,
   ShieldCheck,
   ShoppingBag,
@@ -81,7 +81,7 @@ function DealMessage({ second = false }: { second?: boolean }) {
 }
 
 export function Hero() {
-  return <section id="top" className="hero"><div className="container hero-grid"><div className="hero-copy"><div className="eyebrow"><PackageSearch /> Curadoria de oportunidades</div><h1>A GENTE <em>GARIMPA.</em><br />VOCÊ <span>APROVEITA.</span></h1><p>Encontramos ofertas, cupons e achadinhos na internet para você não precisar ficar procurando.</p><CTA>QUERO RECEBER AS OFERTAS</CTA><small>Grátis <i /> Sem cadastro complicado <i /> Você decide o que vale a pena</small></div><div className="hero-visual" aria-label="Exemplo de ofertas encontradas"><div className="float-tag tag-one">🔥 -43%</div><div className="float-tag tag-two">🏷️ CUPOM</div><div className="float-tag tag-three">⚡ OFERTA</div><div className="offer-radar"><div className="radar-head"><Logo /><span>garimpando agora <i /></span></div><div className="radar-product"><img src={shoeImage} alt="Tênis em uma oferta de exemplo" width={768} height={768} /><div><span>Achadinho encontrado</span><strong>Tênis de corrida</strong><s>R$ 159,90</s><b>R$ 89,90</b></div></div><div className="radar-status"><Search /> Buscando novas oportunidades...</div></div><div className="price-pop">R$ 39,90<small>ACHADINHO</small></div></div></div></section>;
+  return <section id="top" className="hero"><div className="container hero-grid"><div className="hero-copy"><h1>A GENTE <em>GARIMPA.</em><br />VOCÊ <span>APROVEITA.</span></h1><p>Encontramos ofertas, cupons e achadinhos na internet para você não precisar ficar procurando.</p><CTA>QUERO RECEBER AS OFERTAS</CTA><small>Grátis <i /> Sem cadastro complicado <i /> Você decide o que vale a pena</small></div><div className="hero-visual" aria-label="Exemplo de ofertas encontradas"><div className="float-tag tag-one">🔥 -43%</div><div className="float-tag tag-two">🏷️ CUPOM</div><div className="float-tag tag-three">⚡ OFERTA</div><div className="offer-radar"><div className="radar-head"><Logo /><span>garimpando agora <i /></span></div><div className="radar-product"><img src={shoeImage} alt="Tênis em uma oferta de exemplo" width={768} height={768} /><div><span>Achadinho encontrado</span><strong>Tênis de corrida</strong><s>R$ 159,90</s><b>R$ 89,90</b></div></div><div className="radar-status"><Search /> Buscando novas oportunidades...</div></div><div className="price-pop">R$ 39,90<small>ACHADINHO</small></div></div></div></section>;
 }
 
 export function ProblemSection() {
