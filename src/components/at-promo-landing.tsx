@@ -4,6 +4,7 @@ import {
   Check,
   ChevronRight,
   Clock3,
+  Flame,
   Gamepad2,
   Home,
   Menu,
@@ -65,8 +66,8 @@ function Logo({ inverse = false }: { inverse?: boolean }) {
   return <a href="#top" aria-label="AT promo — início" className={`logo ${inverse ? "logo-inverse" : ""}`}><span>AT</span> promo</a>;
 }
 
-function CTA({ children = "QUERO RECEBER AS OFERTAS", className = "" }: { children?: ReactNode; className?: string }) {
-  return <Button asChild variant="cta" size="lg" className={`cta ${className}`}><a href={LINKS.offers}>{children}<ArrowRight /></a></Button>;
+function CTA({ children = "QUERO RECEBER AS OFERTAS", className = "", flame = false }: { children?: ReactNode; className?: string; flame?: boolean }) {
+  return <Button asChild variant="cta" size="lg" className={`cta ${className}`}><a href={LINKS.offers}>{flame && <Flame />}{children}<ArrowRight /></a></Button>;
 }
 
 export function Header() {
@@ -146,7 +147,7 @@ export function FAQ() {
 }
 
 export function FinalCTA() {
-  return <section id="receber" className="final-cta"><div className="container final-inner"><div className="deal-chip chip-a">🔥 OFERTA</div><div className="deal-chip chip-b">-43%</div><div className="deal-chip chip-c">🏷️ CUPOM</div><span className="section-index">A escolha é sua</span><h2>Você pode continuar procurando.<br /><span>Ou pode deixar a gente garimpar.</span></h2><p>Entre gratuitamente no AT promo e comece a receber ofertas, cupons e achadinhos direto no seu celular.</p><CTA>QUERO RECEBER AS OFERTAS</CTA><small>É grátis. Você recebe e decide o que vale a pena.</small></div></section>;
+  return <section id="receber" className="final-cta"><div className="container final-inner"><div className="deal-chip chip-a">🔥 OFERTA</div><div className="deal-chip chip-b">-43%</div><div className="deal-chip chip-c">🏷️ CUPOM</div><span className="section-index">A escolha é sua</span><h2>Você pode continuar procurando.<br /><span>Ou pode deixar a gente garimpar.</span></h2><p>Entre gratuitamente no AT promo e comece a receber ofertas, cupons e achadinhos direto no seu celular.</p><CTA flame>QUERO RECEBER AS OFERTAS</CTA><small>É grátis. Você recebe e decide o que vale a pena.</small></div></section>;
 }
 
 export function Footer() {
@@ -154,7 +155,7 @@ export function Footer() {
 }
 
 export function MobileStickyCTA() {
-  return <div className="mobile-sticky"><CTA>🔥 RECEBER OFERTAS</CTA></div>;
+  return <div className="mobile-sticky"><CTA flame>RECEBER OFERTAS</CTA></div>;
 }
 
 export function ATPromoLanding() {
