@@ -1,0 +1,200 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <radialGradient id="badgeBg" cx="45%" cy="45%" r="55%">
+      <stop offset="0%" stop-color="#FF8A00"/>
+      <stop offset="70%" stop-color="#FF5500"/>
+      <stop offset="100%" stop-color="#D83A00"/>
+    </radialGradient>
+    <linearGradient id="atGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFCA10"/>
+      <stop offset="60%" stop-color="#FF8500"/>
+      <stop offset="100%" stop-color="#FF5B00"/>
+    </linearGradient>
+    <linearGradient id="tagGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF4D26"/>
+      <stop offset="100%" stop-color="#D62800"/>
+    </linearGradient>
+    <filter id="dropShadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#000000" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <!-- Circular background badge & speed lines -->
+  <g id="background">
+    <!-- Motion streak lines behind badge -->
+    <path d="M 40 236 L 110 236" stroke="#FF7A00" stroke-width="12" stroke-linecap="round"/>
+    <path d="M 25 264 L 95 264" stroke="#FF7A00" stroke-width="12" stroke-linecap="round"/>
+    <path d="M 50 292 L 120 292" stroke="#FF7A00" stroke-width="10" stroke-linecap="round"/>
+    
+    <!-- Outer orange badge -->
+    <circle cx="246" cy="240" r="190" fill="url(#badgeBg)" stroke="#18181B" stroke-width="14" filter="url(#dropShadow)"/>
+    <circle cx="246" cy="240" r="172" fill="none" stroke="#FFA733" stroke-width="6" opacity="0.7"/>
+    <path d="M 140 130 A 170 170 0 0 1 350 130" fill="none" stroke="#FFE4A0" stroke-width="10" stroke-linecap="round" opacity="0.4"/>
+    <!-- Dark contrast backdrop in right half -->
+    <path d="M 210 120 C 320 110 400 170 410 270 C 410 330 380 370 330 390 L 190 390 Z" fill="#18181B" opacity="0.95"/>
+  </g>
+
+  <!-- Crab Mascot Character -->
+  <g id="crab-mascot">
+    <!-- Right leg & claw (in background/back) -->
+    <path d="M 380 300 Q 420 290 440 330 Q 420 345 385 330 Z" fill="#FF4216" stroke="#18181B" stroke-width="8"/>
+    <path d="M 425 270 Q 455 240 445 200 Q 420 220 415 250 Z" fill="#FF4216" stroke="#18181B" stroke-width="8"/>
+    <path d="M 400 240 Q 425 200 450 190 C 460 215 440 245 420 255 Z" fill="#FF5B26" stroke="#18181B" stroke-width="8"/>
+
+    <!-- Crab Body -->
+    <ellipse cx="365" cy="305" rx="60" ry="50" fill="#FF441A" stroke="#18181B" stroke-width="9"/>
+    
+    <!-- Green Swim Shorts -->
+    <path d="M 320 325 C 330 315 400 315 410 325 L 405 355 C 390 365 375 365 365 355 C 355 365 340 365 325 355 Z" fill="#15803D" stroke="#18181B" stroke-width="8"/>
+    <line x1="365" y1="325" x2="365" y2="355" stroke="#0F5128" stroke-width="5"/>
+    
+    <!-- White Tank Top -->
+    <path d="M 332 275 Q 365 265 398 275 L 405 328 Q 365 332 325 328 Z" fill="#F8FAFC" stroke="#18181B" stroke-width="8"/>
+    <!-- Tank top neck strap cutout -->
+    <path d="M 350 270 Q 365 282 380 270" fill="none" stroke="#18181B" stroke-width="6"/>
+    
+    <!-- Big Cartoon Eyes -->
+    <g id="eyes">
+      <!-- Eye stalks -->
+      <path d="M 345 235 L 348 200" stroke="#FF441A" stroke-width="16" stroke-linecap="round"/>
+      <path d="M 345 235 L 348 200" stroke="#18181B" stroke-width="8" fill="none"/>
+      <path d="M 380 235 L 378 200" stroke="#FF441A" stroke-width="16" stroke-linecap="round"/>
+      <path d="M 380 235 L 378 200" stroke="#18181B" stroke-width="8" fill="none"/>
+      
+      <!-- Left Eye -->
+      <ellipse cx="348" cy="195" rx="19" ry="26" fill="#FFFFFF" stroke="#18181B" stroke-width="7" transform="rotate(-4 348 195)"/>
+      <ellipse cx="351" cy="196" rx="9" ry="13" fill="#18181B"/>
+      <circle cx="354" cy="191" r="3.5" fill="#FFFFFF"/>
+      
+      <!-- Right Eye -->
+      <ellipse cx="384" cy="195" rx="19" ry="26" fill="#FFFFFF" stroke="#18181B" stroke-width="7" transform="rotate(4 384 195)"/>
+      <ellipse cx="381" cy="196" rx="9" ry="13" fill="#18181B"/>
+      <circle cx="384" cy="191" r="3.5" fill="#FFFFFF"/>
+    </g>
+
+    <!-- Straw/Bucket Hat -->
+    <g id="hat">
+      <!-- Crown of hat -->
+      <ellipse cx="368" cy="148" rx="36" ry="22" fill="#E5C583" stroke="#18181B" stroke-width="8"/>
+      <!-- Hat Ribbon band -->
+      <path d="M 334 153 C 350 162 385 162 402 153" fill="none" stroke="#854D0E" stroke-width="9"/>
+      <path d="M 334 153 C 350 162 385 162 402 153" fill="none" stroke="#18181B" stroke-width="3"/>
+      <!-- Hat Brim -->
+      <path d="M 312 165 C 330 148 405 148 424 165 C 434 175 410 185 368 185 C 326 185 302 175 312 165 Z" fill="#E5C583" stroke="#18181B" stroke-width="8"/>
+      <path d="M 325 168 C 350 178 386 178 411 168" fill="none" stroke="#CA8A04" stroke-width="4" opacity="0.5"/>
+    </g>
+
+    <!-- Left Arm & Claw holding Megaphone -->
+    <g id="holding-megaphone">
+      <!-- Arm -->
+      <path d="M 330 290 Q 285 270 270 240" fill="none" stroke="#FF441A" stroke-width="22" stroke-linecap="round"/>
+      <path d="M 330 290 Q 285 270 270 240" fill="none" stroke="#18181B" stroke-width="8"/>
+      <!-- Claw grasping handle -->
+      <ellipse cx="272" cy="240" rx="16" ry="12" fill="#FF441A" stroke="#18181B" stroke-width="7" transform="rotate(-20 272 240)"/>
+
+      <!-- Megaphone / Loudspeaker -->
+      <!-- Horn cone -->
+      <path d="M 268 226 L 206 182 L 216 142 L 278 186 Z" fill="#FF5B00" stroke="#18181B" stroke-width="8"/>
+      <!-- Horn opening ring -->
+      <ellipse cx="211" cy="162" rx="14" ry="26" fill="#FFCA10" stroke="#18181B" stroke-width="8" transform="rotate(24 211 162)"/>
+      <ellipse cx="211" cy="162" rx="6" ry="16" fill="#B43403" transform="rotate(24 211 162)"/>
+      <!-- Megaphone handle and base ring -->
+      <rect x="264" y="226" width="14" height="28" rx="6" fill="#18181B" transform="rotate(20 264 226)"/>
+      <ellipse cx="273" cy="206" rx="8" ry="16" fill="#18181B" transform="rotate(24 273 206)"/>
+
+      <!-- Sound Wave Accents from Megaphone -->
+      <path d="M 185 140 A 24 24 0 0 0 178 180" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round"/>
+      <path d="M 166 125 A 40 40 0 0 0 155 195" fill="none" stroke="#FFCA10" stroke-width="7" stroke-linecap="round"/>
+      <path d="M 148 112 A 58 58 0 0 0 132 210" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round"/>
+    </g>
+
+    <!-- Main Right Claw in front holding Discount Tag -->
+    <g id="claw-with-tag">
+      <!-- Upper arm -->
+      <path d="M 390 280 Q 425 295 435 340" fill="none" stroke="#FF441A" stroke-width="22" stroke-linecap="round"/>
+      <path d="M 390 280 Q 425 295 435 340" fill="none" stroke="#18181B" stroke-width="8"/>
+      
+      <!-- Big Crab Pincer -->
+      <path d="M 425 330 C 445 320 480 340 482 375 C 465 375 445 365 435 350 Z" fill="#FF441A" stroke="#18181B" stroke-width="8"/>
+      <path d="M 425 355 C 445 365 470 395 460 415 C 445 405 430 385 425 370 Z" fill="#FF3305" stroke="#18181B" stroke-width="8"/>
+
+      <!-- String to Tag -->
+      <path d="M 458 375 Q 465 405 460 425" fill="none" stroke="#18181B" stroke-width="5" stroke-dasharray="2 4"/>
+      
+      <!-- Discount Hanging Tag (angled) -->
+      <g transform="translate(442, 420) rotate(-10)">
+        <!-- Tag Body with notched top corners -->
+        <path d="M 15 0 L 40 0 L 52 14 L 52 75 C 52 82 46 88 38 88 L 0 88 C -8 88 -14 82 -14 75 L -14 14 L -2 0 Z" fill="url(#tagGrad)" stroke="#18181B" stroke-width="7" filter="url(#dropShadow)"/>
+        <!-- Tag eyelet hole -->
+        <circle cx="19" cy="14" r="6" fill="#FFFFFF" stroke="#18181B" stroke-width="4"/>
+        <!-- Big '%' sign in Tag -->
+        <text x="19" y="68" font-family="'Arial Black', 'Impact', sans-serif" font-size="46" font-weight="900" fill="#FFCA10" stroke="#18181B" stroke-width="4" text-anchor="middle">%</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Giant 3D 'AT' Text -->
+  <g id="text-at" transform="translate(25, 20)">
+    <!-- 3D Depth Extrusion for 'A' -->
+    <path d="M 85 240 L 125 110 L 155 110 L 195 240 L 170 252 L 135 125 L 105 125 L 60 252 Z" fill="#7A2600"/>
+    <path d="M 90 260 L 140 98 L 190 98 L 240 260 L 205 260 L 190 215 L 140 215 L 125 260 Z" fill="#0F0F10" stroke="#0F0F10" stroke-width="16" stroke-linejoin="round"/>
+    <path d="M 90 252 L 140 90 L 190 90 L 240 252 L 205 252 L 190 207 L 140 207 L 125 252 Z" fill="url(#atGrad)" stroke="#18181B" stroke-width="8" stroke-linejoin="round"/>
+    <!-- Inner hole of 'A' -->
+    <polygon points="150,135 180,135 165,182" fill="#18181B"/>
+    <polygon points="150,130 180,130 165,177" fill="#FF6600"/>
+
+    <!-- 3D Depth Extrusion for 'T' -->
+    <path d="M 230 135 L 290 135 L 290 258 L 255 258 L 255 135 Z" fill="#7A2600"/>
+    <path d="M 205 98 L 330 98 L 330 142 L 285 142 L 285 260 L 245 260 L 245 142 L 205 142 Z" fill="#0F0F10" stroke="#0F0F10" stroke-width="16" stroke-linejoin="round"/>
+    <path d="M 205 90 L 330 90 L 330 134 L 285 134 L 285 252 L 245 252 L 245 134 L 205 134 Z" fill="url(#atGrad)" stroke="#18181B" stroke-width="8" stroke-linejoin="round"/>
+
+    <!-- Specular highlight glints on 'AT' -->
+    <path d="M 143 96 L 158 96 L 118 220 L 108 220 Z" fill="#FFE885" opacity="0.6"/>
+    <path d="M 212 96 L 322 96 L 322 106 L 212 106 Z" fill="#FFE885" opacity="0.6"/>
+  </g>
+
+  <!-- 'PROMOÇÕES' Black Banner Ribbon -->
+  <g id="banner-promocoes" filter="url(#dropShadow)">
+    <!-- Banner Shadow & Extrusion -->
+    <path d="M 55 355 L 435 315 L 452 385 L 72 425 Z" fill="#0F0F12"/>
+    <!-- Banner Front Face (slanted polygon) -->
+    <path d="M 50 345 L 435 305 L 445 375 L 60 415 Z" fill="#18181B" stroke="#FF9000" stroke-width="6" stroke-linejoin="round"/>
+    <!-- Bottom golden accent edge -->
+    <path d="M 60 415 L 445 375 L 448 382 L 63 422 Z" fill="#EAB308" stroke="#18181B" stroke-width="3"/>
+    
+    <!-- 'PROMOÇÕES' Text -->
+    <g transform="translate(55, 345) rotate(-5.5)">
+      <text x="185" y="52" 
+            font-family="'Arial Black', 'Impact', sans-serif" 
+            font-size="50" 
+            font-weight="900" 
+            letter-spacing="2" 
+            fill="#FFFFFF" 
+            stroke="#18181B" 
+            stroke-width="4" 
+            text-anchor="middle">PROMOÇÕES</text>
+    </g>
+  </g>
+
+  <!-- Tagline 'OFERTAS QUE VALEM A PENA!' with accent rays -->
+  <g id="tagline" transform="translate(250, 442)">
+    <!-- Left 3 rays -->
+    <line x1="-155" y1="-8" x2="-140" y2="-15" stroke="#FF7A00" stroke-width="5" stroke-linecap="round"/>
+    <line x1="-160" y1="3" x2="-142" y2="1" stroke="#FF7A00" stroke-width="5" stroke-linecap="round"/>
+    <line x1="-152" y1="14" x2="-138" y2="16" stroke="#FF7A00" stroke-width="5" stroke-linecap="round"/>
+    
+    <!-- Tagline text -->
+    <text x="0" y="8" 
+          font-family="'Arial Black', 'Trebuchet MS', sans-serif" 
+          font-size="18" 
+          font-weight="900" 
+          letter-spacing="1.5" 
+          fill="#18181B" 
+          text-anchor="middle">OFERTAS QUE VALEM A PENA!</text>
+
+    <!-- Right 3 rays -->
+    <line x1="140" y1="-15" x2="155" y2="-8" stroke="#FF7A00" stroke-width="5" stroke-linecap="round"/>
+    <line x1="142" y1="1" x2="160" y2="3" stroke="#FF7A00" stroke-width="5" stroke-linecap="round"/>
+    <line x1="138" y1="16" x2="152" y2="14" stroke="#FF7A00" stroke-width="5" stroke-linecap="round"/>
+  </g>
+</svg>

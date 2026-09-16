@@ -1,5 +1,19 @@
-import { useState, type ReactNode } from "react";
-import { ArrowRight, Check, ChevronRight, Clock3, Flame, Gamepad2, Hop as Home, Menu, MessageCircle, Search, ShieldCheck, ShoppingBag, Smartphone, Sparkles, Tag, Wrench, X, Zap } from "lucide-react";
+import { useState, useEffect, type ReactNode } from "react";
+import {
+  ArrowRight,
+  Check,
+  ChevronRight,
+  Eye,
+  Flame,
+  Menu,
+  MessageCircle,
+  Search,
+  Send,
+  ShieldCheck,
+  Smartphone,
+  Tag,
+  X,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Accordion,
@@ -13,33 +27,40 @@ import toolsImage from "@/assets/offer-tools.jpg";
 import airfryerImage from "@/assets/offer-airfryer.jpg";
 import speakerImage from "@/assets/offer-speaker.jpg";
 import tumblerImage from "@/assets/offer-tumbler.jpg";
-import logoAsset from "@/assets/at-promo-logo.png.asset.json";
+import galaxyS25Image from "@/assets/offer-galaxy-s25-ultra.jpg";
+import fitnessGraceImage from "@/assets/offer-fitness-grace.jpg";
+import logoPng from "@/assets/at-promo-logo.png";
+import { MarketplaceMarquee } from "./marketplace-marquee";
 
 const LINKS = {
-  offers: "#receber",
-  instagram: "#",
-  whatsapp: "#receber",
-  telegram: "#receber",
-  privacy: "#",
-  terms: "#",
+  offers: "#ofertas",
+  instagram: "https://www.instagram.com/atpromoo?stkn=MXU0bnR6cnYwYnhnag==",
+  whatsapp: "https://chat.whatsapp.com/IDN79MDjG97Dj8NqsvKlqh",
+  telegram: "https://t.me/ATPROMOC",
+  whatsappGerais: "https://chat.whatsapp.com/IDN79MDjG97Dj8NqsvKlqh",
+  telegramGerais: "https://t.me/ATPROMOGERAIS",
+  telegramTech: "https://t.me/ATPROMOC",
 };
 
 const offers = [
   {
-    image: shoeImage,
-    name: "Tênis de corrida",
-    old: "R$ 159,90",
-    price: "R$ 89,90",
-    off: "43% OFF",
-    store: "Loja parceira",
+    image:
+      "https://images.unsplash.com/photo-1583863788434-e58a36330cf0?auto=format&fit=crop&w=800&q=80",
+    name: "Carregador Portatil Power Bank i2GO 10000mAh 1 Usb-C e 2 Usb-A",
+    old: "R$ 99,90",
+    price: "R$ 53,00",
+    off: "47% OFF",
+    store: "Shopee",
+    link: "https://s.shopee.com.br/7fZqVt4quO?lp=aff",
   },
   {
     image: earbudsImage,
-    name: "Fone Bluetooth",
-    old: "R$ 89,90",
-    price: "R$ 39,90",
-    off: "55% OFF",
-    store: "Marketplace",
+    name: "Basike Fone De Ouvido Sem Fio Bluetooth Com Gancho Gamer Esportivo Baixa Latência 100h, Design Aberto",
+    old: "R$ 159,90",
+    price: "R$ 78,00",
+    off: "51% OFF",
+    store: "Mercado Livre",
+    link: "https://meli.la/2ATJe3U",
   },
   {
     image: toolsImage,
@@ -48,6 +69,7 @@ const offers = [
     price: "R$ 99,90",
     off: "33% OFF",
     store: "Loja parceira",
+    link: "#",
   },
   {
     image: airfryerImage,
@@ -56,6 +78,7 @@ const offers = [
     price: "R$ 329,90",
     off: "34% OFF",
     store: "Marketplace",
+    link: "#",
   },
   {
     image: speakerImage,
@@ -64,6 +87,7 @@ const offers = [
     price: "R$ 69,90",
     off: "41% OFF",
     store: "Loja parceira",
+    link: "#",
   },
   {
     image: tumblerImage,
@@ -72,33 +96,30 @@ const offers = [
     price: "R$ 49,90",
     off: "37% OFF",
     store: "Marketplace",
+    link: "#",
   },
-];
-
-const categories = [
-  { icon: Home, title: "Casa", text: "Utilidades que facilitam a rotina." },
-  { icon: Smartphone, title: "Tecnologia", text: "Acessórios e eletrônicos úteis." },
-  { icon: Smartphone, title: "Celulares", text: "Aparelhos, capas e carregadores." },
-  { icon: ShoppingBag, title: "Moda", text: "Roupas, calçados e acessórios." },
-  { icon: Wrench, title: "Ferramentas", text: "Do reparo rápido ao projeto novo." },
-  { icon: Gamepad2, title: "Games", text: "Jogos, controles e periféricos." },
-  { icon: Sparkles, title: "Achadinhos", text: "Coisas que valem o clique." },
 ];
 
 function Logo({ inverse = false }: { inverse?: boolean }) {
   return (
     <a
       href="#top"
-      aria-label="AT promo — início"
+      aria-label="AT Promoções — início"
       className={`logo ${inverse ? "logo-inverse" : ""}`}
     >
-      <img src={logoAsset.url} alt="AT promo" width={512} height={512} />
+      <img
+        src={logoPng}
+        alt="AT Promoções — Ofertas que valem a pena!"
+        width={1191}
+        height={1034}
+        referrerPolicy="no-referrer"
+      />
     </a>
   );
 }
 
 function CTA({
-  children = "QUERO RECEBER AS OFERTAS",
+  children = "ENTRAR NO GRUPO",
   className = "",
   flame = false,
 }: {
@@ -120,9 +141,8 @@ function CTA({
 export function Header() {
   const [open, setOpen] = useState(false);
   const nav = [
-    ["Ofertas", "#ofertas"],
+    ["Grupos", "#ofertas"],
     ["Como funciona", "#como-funciona"],
-    ["Categorias", "#categorias"],
     ["Dúvidas", "#duvidas"],
   ];
   return (
@@ -136,7 +156,6 @@ export function Header() {
             </a>
           ))}
         </nav>
-        <CTA className="header-cta">RECEBER OFERTAS</CTA>
         <Button
           variant="ghost"
           size="icon"
@@ -155,7 +174,7 @@ export function Header() {
               <ChevronRight />
             </a>
           ))}
-          <CTA>RECEBER OFERTAS</CTA>
+          <CTA>ENTRAR NO GRUPO</CTA>
         </nav>
       )}
     </header>
@@ -168,19 +187,28 @@ function DealMessage({ second = false }: { second?: boolean }) {
       <div className="message-kicker">{second ? "⚡ OFERTA RELÂMPAGO" : "🔥 ACHADINHO"}</div>
       <div className="message-product">
         <img
-          src={second ? earbudsImage : shoeImage}
-          alt={second ? "Fone Bluetooth" : "Tênis de corrida"}
+          src={second ? fitnessGraceImage : galaxyS25Image}
+          alt={
+            second
+              ? "Conjunto Academia Fitness Grace Azul Claro Cós Alto Forro Duplo AQN SPORT"
+              : "Samsung Galaxy S25 Ultra 5g, 256GB, 12GB, Câm. Quád. Titanium Black"
+          }
           width={768}
           height={768}
+          referrerPolicy="no-referrer"
         />
         <div>
-          <strong>{second ? "Fone Bluetooth" : "Tênis de corrida"}</strong>
-          <s>{second ? "R$ 89,90" : "R$ 159,90"}</s>
-          <b>{second ? "R$ 39,90" : "R$ 89,90"}</b>
+          <strong>
+            {second
+              ? "Conjunto Academia Fitness Grace Azul Claro Cós Alto Forro Duplo AQN SPORT"
+              : "Samsung Galaxy S25 Ultra 5g, 256GB, 12GB, Câm. Quád. Titanium Black"}
+          </strong>
+          <s>{second ? "R$ 90,00" : "R$ 5.998,89"}</s>
+          <b>{second ? "R$ 53,00" : "R$ 4859"}</b>
         </div>
       </div>
       <div className="message-bottom">
-        <span>{second ? "55% OFF" : "🏷️ Cupom disponível"}</span>
+        <span>{second ? "41% OFF" : "🏷️ Cupom disponível"}</span>
         <span>APROVEITAR</span>
       </div>
     </div>
@@ -197,44 +225,25 @@ export function Hero() {
             <br />
             VOCÊ <span>APROVEITA.</span>
           </h1>
-          <p>
-            Encontramos ofertas, cupons e achadinhos na internet para você não precisar ficar
-            procurando.
-          </p>
-          <CTA>QUERO RECEBER AS OFERTAS</CTA>
-          <small>
-            Grátis <i /> Sem cadastro complicado <i /> Você decide o que vale a pena
-          </small>
-        </div>
-        <div className="hero-visual" aria-label="Exemplo de ofertas encontradas">
-          <div className="float-tag tag-one">🔥 -43%</div>
-          <div className="float-tag tag-two">🏷️ CUPOM</div>
-          <div className="float-tag tag-three">⚡ OFERTA</div>
-          <div className="offer-radar">
-            <div className="radar-head">
-              <Logo />
-              <span>
-                garimpando agora <i />
-              </span>
-            </div>
-            <div className="radar-product">
-              <img src={shoeImage} alt="Tênis em uma oferta de exemplo" width={768} height={768} />
-              <div>
-                <span>Achadinho encontrado</span>
-                <strong>Tênis de corrida</strong>
-                <s>R$ 159,90</s>
-                <b>R$ 89,90</b>
-              </div>
-            </div>
-            <div className="radar-status">
-              <Search /> Buscando novas oportunidades...
-            </div>
-          </div>
-          <div className="price-pop">
-            R$ 39,90<small>ACHADINHO</small>
-          </div>
+          <p>Ofertas, cupons e achadinhos, sem você precisar procurar.</p>
+          <CTA flame>ENTRAR NO GRUPO</CTA>
+          <ul className="hero-bullets" aria-label="Benefícios do grupo">
+            <li>
+              <Check className="bullet-icon" />
+              <span>100% gratuito</span>
+            </li>
+            <li>
+              <Check className="bullet-icon" />
+              <span>Sem cadastro</span>
+            </li>
+            <li>
+              <Check className="bullet-icon" />
+              <span>Você decide o que comprar</span>
+            </li>
+          </ul>
         </div>
       </div>
+      <MarketplaceMarquee />
     </section>
   );
 }
@@ -306,56 +315,83 @@ export function OfferPreview() {
   return (
     <section id="ofertas" className="section preview-section">
       <div className="container preview-grid">
-        <div>
+        <div className="preview-action-column">
           <span className="section-index">Direto no celular</span>
-          <h2>
-            É mais ou menos assim <span>↓</span>
-          </h2>
-          <p>Encontrou. Chegou. Agora é com você.</p>
-          <div className="decision-flow">
-            <span>Você recebe</span>
-            <ArrowRight />
-            <span>Olha</span>
-            <ArrowRight />
-            <strong>Decide</strong>
+
+          <div className="mini-steps" aria-label="Como funciona o grupo">
+            <div className="mini-step">
+              <Smartphone className="mini-step-icon" />
+              <span>Você recebe</span>
+            </div>
+            <ArrowRight className="mini-step-arrow" />
+            <div className="mini-step">
+              <Eye className="mini-step-icon" />
+              <span>Olha</span>
+            </div>
+            <ArrowRight className="mini-step-arrow" />
+            <div className="mini-step">
+              <Check className="mini-step-icon" />
+              <span>Decide</span>
+            </div>
+          </div>
+
+          <div className="channel-selection">
+            <div className="primary-channel-wrapper">
+              <span className="channel-badge">CANAL MAIS POPULAR</span>
+              <a
+                id="btn-whatsapp-ofertas-gerais"
+                href={LINKS.whatsappGerais}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group-btn group-btn-whatsapp primary-channel-btn"
+              >
+                <MessageCircle className="group-btn-icon" strokeWidth={2.5} />
+                <div className="group-btn-content">
+                  <span className="group-btn-main">ENTRAR NO GRUPO</span>
+                  <span className="group-btn-sub">WhatsApp • Ofertas Gerais</span>
+                </div>
+                <ArrowRight className="group-btn-arrow" />
+              </a>
+            </div>
+
+            <div className="secondary-channels">
+              <span className="secondary-channels-label">Prefere outro canal?</span>
+              <div className="secondary-channels-links">
+                <a
+                  id="btn-telegram-ofertas-gerais"
+                  href={LINKS.telegramGerais}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="secondary-channel-btn"
+                >
+                  <Send className="secondary-btn-icon" />
+                  <span>Telegram Geral</span>
+                </a>
+                <span className="secondary-dot" aria-hidden="true">
+                  ·
+                </span>
+                <a
+                  id="btn-telegram-ofertas-tech"
+                  href={LINKS.telegramTech}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="secondary-channel-btn"
+                >
+                  <Send className="secondary-btn-icon" />
+                  <span>Telegram Tech</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div className="trust-badge">
+            <ShieldCheck className="trust-badge-icon" />
+            <span>🔒 Só moderadores enviam links — 100% verificado.</span>
           </div>
         </div>
-        <div className="message-stack">
+        <div className="message-stack" aria-label="Exemplos reais de ofertas no grupo">
           <DealMessage />
           <DealMessage second />
-        </div>
-      </div>
-    </section>
-  );
-}
-
-export function CategoryCard({ item }: { item: (typeof categories)[number] }) {
-  const Icon = item.icon;
-  return (
-    <article className="category-card">
-      <Icon />
-      <h3>{item.title}</h3>
-      <p>{item.text}</p>
-    </article>
-  );
-}
-
-export function CategoriesSection() {
-  return (
-    <section id="categorias" className="section categories">
-      <div className="container">
-        <div className="section-heading centered">
-          <span className="section-index">De tudo um pouco</span>
-          <h2>E não é só um tipo de produto.</h2>
-          <p>
-            De coisa para casa até tecnologia, ferramentas e aquele achadinho que você nem estava
-            procurando.
-          </p>
-        </div>
-        <div className="category-grid">
-          {categories.map((item) => (
-            <CategoryCard key={item.title} item={item} />
-          ))}
         </div>
       </div>
     </section>
@@ -409,8 +445,8 @@ export function ComparisonSection() {
 }
 
 export function OfferCard({ offer }: { offer: (typeof offers)[number] }) {
-  return (
-    <article className="offer-card">
+  const content = (
+    <>
       <div className="offer-image">
         <img loading="lazy" src={offer.image} alt={offer.name} width={768} height={768} />
         <span>{offer.off}</span>
@@ -421,6 +457,24 @@ export function OfferCard({ offer }: { offer: (typeof offers)[number] }) {
         <s>{offer.old}</s>
         <strong>{offer.price}</strong>
       </div>
+    </>
+  );
+
+  return (
+    <article className="offer-card">
+      {offer.link && offer.link !== "#" ? (
+        <a
+          href={offer.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="offer-card-link"
+          style={{ textDecoration: "none", color: "inherit", display: "block" }}
+        >
+          {content}
+        </a>
+      ) : (
+        content
+      )}
     </article>
   );
 }
@@ -430,7 +484,6 @@ function OffersShowcase() {
     <section className="section showcase">
       <div className="container">
         <div className="section-heading">
-          <span className="section-index">Exemplos de oportunidades</span>
           <h2>
             Olha o que a gente pode encontrar <span>👀</span>
           </h2>
@@ -442,56 +495,7 @@ function OffersShowcase() {
           ))}
         </div>
         <div className="center-cta">
-          <CTA>QUERO RECEBER ESSE TIPO DE OFERTA</CTA>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-export function MobileMockup() {
-  return (
-    <section className="section phone-section">
-      <div className="container phone-grid">
-        <div className="phone">
-          <div className="phone-top">
-            <span>9:41</span>
-            <i />
-          </div>
-          <div className="phone-chat-head">
-            <Logo />
-            <small>oportunidades para você</small>
-          </div>
-          <div className="phone-chat">
-            <DealMessage />
-            <div className="coupon-message">
-              <Tag />{" "}
-              <div>
-                <small>CUPOM</small>
-                <strong>R$ 20 OFF</strong>
-              </div>
-            </div>
-            <DealMessage second />
-          </div>
-        </div>
-        <div className="phone-copy">
-          <span className="section-index">No seu ritmo</span>
-          <h2>As oportunidades chegam até você.</h2>
-          <div className="phone-point">
-            <Clock3 />
-            <div>
-              <strong>Você não precisa ficar procurando.</strong>
-              <p>Quando aparece uma oportunidade interessante, ela chega até você.</p>
-            </div>
-          </div>
-          <div className="phone-point">
-            <ShieldCheck />
-            <div>
-              <strong>Você continua no controle.</strong>
-              <p>Confira os detalhes e aproveite somente se fizer sentido.</p>
-            </div>
-          </div>
-          <CTA>RECEBER OFERTAS</CTA>
+          <CTA flame>ENTRAR NO GRUPO</CTA>
         </div>
       </div>
     </section>
@@ -508,7 +512,6 @@ export function HowItWorks() {
     <section id="como-funciona" className="section steps">
       <div className="container">
         <div className="section-heading centered">
-          <span className="section-index">Simples assim</span>
           <h2>Como funciona?</h2>
         </div>
         <div className="steps-grid">
@@ -523,60 +526,6 @@ export function HowItWorks() {
         </div>
         <div className="free-note">
           <Check /> Sem mensalidade. Sem obrigação de comprar.
-        </div>
-      </div>
-    </section>
-  );
-}
-
-export function TrustSection() {
-  return (
-    <section className="section trust">
-      <div className="container trust-grid">
-        <div>
-          <span className="section-index">Transparência sempre</span>
-          <h2>Você decide o que vale a pena.</h2>
-          <p>O AT promo não compra por você e não obriga você a aproveitar nenhuma oferta.</p>
-          <p>Você recebe a oportunidade, confere os detalhes e decide.</p>
-        </div>
-        <div className="trust-checks">
-          {["Você escolhe", "Você compara", "Você decide"].map((x) => (
-            <div key={x}>
-              <Check />
-              <strong>{x}</strong>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-export function TestimonialCard({ label }: { label: string }) {
-  return (
-    <div className="testimonial-placeholder">
-      <MessageCircle />
-      <strong>{label}</strong>
-      <p>Espaço reservado para conteúdo real da comunidade.</p>
-    </div>
-  );
-}
-
-function SocialProof() {
-  return (
-    <section className="section social">
-      <div className="container">
-        <div className="section-heading centered">
-          <span className="section-index">Comunidade</span>
-          <h2>
-            Quem já acompanha, fica de olho <span>👀</span>
-          </h2>
-          <p>Em breve, experiências reais de quem acompanha o AT promo.</p>
-        </div>
-        <div className="three-grid">
-          <TestimonialCard label="Print real" />
-          <TestimonialCard label="Comentário real" />
-          <TestimonialCard label="Mensagem real" />
         </div>
       </div>
     </section>
@@ -605,7 +554,6 @@ export function FAQ() {
     <section id="duvidas" className="section faq">
       <div className="container faq-grid">
         <div>
-          <span className="section-index">Perguntas frequentes</span>
           <h2>Ainda tem dúvida?</h2>
           <p>A gente responde sem letras miúdas.</p>
         </div>
@@ -617,30 +565,6 @@ export function FAQ() {
             </AccordionItem>
           ))}
         </Accordion>
-      </div>
-    </section>
-  );
-}
-
-export function FinalCTA() {
-  return (
-    <section id="receber" className="final-cta">
-      <div className="container final-inner">
-        <div className="deal-chip chip-a">🔥 OFERTA</div>
-        <div className="deal-chip chip-b">-43%</div>
-        <div className="deal-chip chip-c">🏷️ CUPOM</div>
-        <span className="section-index">A escolha é sua</span>
-        <h2>
-          Você pode continuar procurando.
-          <br />
-          <span>Ou pode deixar a gente garimpar.</span>
-        </h2>
-        <p>
-          Entre gratuitamente no AT promo e comece a receber ofertas, cupons e achadinhos direto no
-          seu celular.
-        </p>
-        <CTA flame>QUERO RECEBER AS OFERTAS</CTA>
-        <small>É grátis. Você recebe e decide o que vale a pena.</small>
       </div>
     </section>
   );
@@ -658,8 +582,6 @@ export function Footer() {
           <a href={LINKS.instagram}>Instagram</a>
           <a href={LINKS.whatsapp}>WhatsApp</a>
           <a href={LINKS.telegram}>Telegram</a>
-          <a href={LINKS.privacy}>Política de Privacidade</a>
-          <a href={LINKS.terms}>Termos de Uso</a>
         </nav>
       </div>
       <div className="container copyright">
@@ -670,9 +592,26 @@ export function Footer() {
 }
 
 export function MobileStickyCTA() {
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 120) {
+        setShow(true);
+      } else {
+        setShow(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  if (!show) return null;
+
   return (
     <div className="mobile-sticky">
-      <CTA flame>RECEBER OFERTAS</CTA>
+      <CTA flame>ENTRAR NO GRUPO</CTA>
     </div>
   );
 }
@@ -684,14 +623,9 @@ export function ATPromoLanding() {
       <main>
         <Hero />
         <OfferPreview />
-        <CategoriesSection />
         <OffersShowcase />
-        <MobileMockup />
         <HowItWorks />
-        <TrustSection />
-        <SocialProof />
         <FAQ />
-        <FinalCTA />
       </main>
       <Footer />
       <MobileStickyCTA />
