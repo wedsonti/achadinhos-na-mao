@@ -1,4 +1,4 @@
-# O Garimpo Certo - usando um prompt do GPT FREE
+# Laning page de achadinhos - usando um prompt do GPT FREE
 
 Crie uma landing page completa, moderna, responsiva e focada em conversão para o projeto “AT promo”.
 
