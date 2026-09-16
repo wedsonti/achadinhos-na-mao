@@ -1,4 +1,4 @@
-# O Garimpo Certo
+# O Garimpo Certo - usando umm prompt do GPT FREE
 
 Crie uma landing page completa, moderna, responsiva e focada em conversão para o projeto “AT promo”.
 
