@@ -165,8 +165,9 @@ p {
   gap: 24px;
 }
 .header-inner .desktop-nav {
-  grid-column: 1;
-  justify-self: start;
+  grid-column: 3;
+  justify-self: end;
+  margin-right: 20px;
 }
 .header-inner .logo {
   grid-column: 2;
