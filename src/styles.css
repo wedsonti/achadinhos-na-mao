@@ -429,6 +429,11 @@ p {
 }
 .hero-copy .cta {
   margin-top: 10px;
+  background-color: #1ea952 !important;
+  color: #ffffff !important;
+}
+.hero-copy .cta:hover {
+  background-color: #188a43 !important;
 }
 .hero-bullets {
   display: flex;
