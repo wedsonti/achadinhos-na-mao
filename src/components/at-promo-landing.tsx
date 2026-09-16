@@ -183,9 +183,9 @@ export function Header() {
 
 function DealMessage({ second = false }: { second?: boolean }) {
   return (
-    <div className="deal-message">
-      <div className="message-kicker">{second ? "⚡ OFERTA RELÂMPAGO" : "🔥 ACHADINHO"}</div>
-      <div className="message-product">
+    <div className="deal-message" suppressHydrationWarning>
+      <div className="message-kicker" suppressHydrationWarning>{second ? "⚡ OFERTA RELÂMPAGO" : "🔥 ACHADINHO"}</div>
+      <div className="message-product" suppressHydrationWarning>
         <img
           src={second ? fitnessGraceImage : galaxyS25Image}
           alt={
@@ -197,19 +197,19 @@ function DealMessage({ second = false }: { second?: boolean }) {
           height={768}
           referrerPolicy="no-referrer"
         />
-        <div>
-          <strong>
+        <div suppressHydrationWarning>
+          <strong suppressHydrationWarning>
             {second
               ? "Conjunto Academia Fitness Grace Azul Claro Cós Alto Forro Duplo AQN SPORT"
               : "Samsung Galaxy S25 Ultra 5g, 256GB, 12GB, Câm. Quád. Titanium Black"}
           </strong>
-          <s>{second ? "R$ 90,00" : "R$ 5.998,89"}</s>
-          <b>{second ? "R$ 53,00" : "R$ 4859"}</b>
+          <s suppressHydrationWarning>{second ? "R$ 90,00" : "R$ 5.998,89"}</s>
+          <b suppressHydrationWarning>{second ? "R$ 53,00" : "R$ 4859"}</b>
         </div>
       </div>
-      <div className="message-bottom">
-        <span>{second ? "41% OFF" : "🏷️ Cupom disponível"}</span>
-        <span>APROVEITAR</span>
+      <div className="message-bottom" suppressHydrationWarning>
+        <span suppressHydrationWarning>{second ? "41% OFF" : "🏷️ Cupom disponível"}</span>
+        <span suppressHydrationWarning>APROVEITAR</span>
       </div>
     </div>
   );
