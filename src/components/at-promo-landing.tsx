@@ -1,4 +1,4 @@
-import { useState, useEffect, type ReactNode } from "react";
+import { useState, useEffect, useRef, type ReactNode } from "react";
 import {
   ArrowRight,
   Check,
@@ -13,6 +13,8 @@ import {
   ShieldCheck,
   Smartphone,
   Tag,
+  Volume2,
+  VolumeX,
   X,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -551,9 +553,95 @@ export function Footer() {
         </nav>
       </div>
       <div className="container copyright">
-        © {new Date().getFullYear()} AT promo. Todos os direitos reservados.
+        <div className="copyright-inner">
+          <span>© {new Date().getFullYear()} AT promo. Todos os direitos reservados.</span>
+          <span className="audio-license">
+            Trilha:{" "}
+            <a
+              href="https://pixabay.com/pt/users/multimusicas-54375882/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=474631"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="license-link"
+            >
+              Allan Pacheco
+            </a>{" "}
+            (Pixabay)
+          </span>
+        </div>
       </div>
     </footer>
+  );
+}
+
+export function DiscreteAudioButton() {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (audio) {
+      audio.volume = 1.0;
+      audio.muted = false;
+    }
+  }, []);
+
+  const togglePlay = () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    if (isPlaying) {
+      audio.pause();
+      setIsPlaying(false);
+    } else {
+      audio.currentTime = 0;
+      audio.muted = false;
+      audio.volume = 1.0;
+      audio
+        .play()
+        .then(() => {
+          setIsPlaying(true);
+        })
+        .catch((err) => {
+          console.warn("Reprodução de áudio impedida ou falhou:", err);
+          setIsPlaying(false);
+        });
+    }
+  };
+
+  return (
+    <>
+      <audio
+        ref={audioRef}
+        src="/audio/multimusicas-guitar-br-474631.mp3"
+        loop
+        preload="auto"
+        onPlay={() => setIsPlaying(true)}
+        onPause={() => setIsPlaying(false)}
+        onError={(e) => console.error("Erro no elemento de áudio:", e)}
+      />
+      <button
+        type="button"
+        id="btn-toque-para-ouvir"
+        onClick={togglePlay}
+        className={`discrete-audio-btn ${isPlaying ? "is-playing" : ""}`}
+        aria-label={isPlaying ? "Pausar som" : "Toque para ouvir música"}
+      >
+        <span className="audio-icon-wrapper">
+          {isPlaying ? (
+            <span className="audio-bars" aria-hidden="true">
+              <span className="bar bar-1" />
+              <span className="bar bar-2" />
+              <span className="bar bar-3" />
+            </span>
+          ) : (
+            <Volume2 className="audio-icon" aria-hidden="true" />
+          )}
+        </span>
+        <span className="audio-label">
+          {isPlaying ? "Tocando som" : "toque para ouvir"}
+        </span>
+      </button>
+    </>
   );
 }
 
@@ -593,6 +681,7 @@ export function ATPromoLanding() {
         <FAQ />
       </main>
       <Footer />
+      <DiscreteAudioButton />
       <MobileStickyCTA />
     </>
   );
