@@ -3,6 +3,7 @@ import {
   ArrowRight,
   Check,
   ChevronRight,
+  ExternalLink,
   Eye,
   Flame,
   Menu,
@@ -44,59 +45,65 @@ const LINKS = {
 
 const offers = [
   {
-    image:
-      "https://images.unsplash.com/photo-1583863788434-e58a36330cf0?auto=format&fit=crop&w=800&q=80",
-    name: "Carregador Portatil Power Bank i2GO 10000mAh 1 Usb-C e 2 Usb-A",
-    old: "R$ 99,90",
-    price: "R$ 53,00",
-    off: "47% OFF",
-    store: "Shopee",
-    link: "https://s.shopee.com.br/7fZqVt4quO?lp=aff",
+    image: galaxyS25Image,
+    name: "Samsung Galaxy S25 Ultra 5G 256GB 12GB RAM Câmera Quádrupla Titanium Black",
+    old: "R$ 5.998,89",
+    price: "R$ 4.859,00",
+    off: "R$ 1.139 OFF",
+    store: "Mercado Livre",
+    tag: "Oferta Relâmpago",
+    link: "https://meli.la/2ATJe3U",
   },
   {
     image: earbudsImage,
-    name: "Basike Fone De Ouvido Sem Fio Bluetooth Com Gancho Gamer Esportivo Baixa Latência 100h, Design Aberto",
+    name: "Basike Fone De Ouvido Sem Fio Bluetooth Gamer Esportivo 100h com Gancho",
     old: "R$ 159,90",
     price: "R$ 78,00",
     off: "51% OFF",
     store: "Mercado Livre",
+    tag: "Mais Vendido",
     link: "https://meli.la/2ATJe3U",
   },
   {
-    image: toolsImage,
-    name: "Kit de ferramentas",
-    old: "R$ 149,90",
-    price: "R$ 99,90",
-    off: "33% OFF",
-    store: "Loja parceira",
-    link: "#",
+    image:
+      "https://images.unsplash.com/photo-1583863788434-e58a36330cf0?auto=format&fit=crop&w=800&q=80",
+    name: "Power Bank i2GO 10000mAh 1 Usb-C e 2 Usb-A Carregamento Rápido",
+    old: "R$ 99,90",
+    price: "R$ 53,00",
+    off: "47% OFF",
+    store: "Shopee",
+    tag: "Cupom Ativo",
+    link: "https://s.shopee.com.br/7fZqVt4quO?lp=aff",
+  },
+  {
+    image: fitnessGraceImage,
+    name: "Conjunto Academia Fitness Grace Cós Alto Forro Duplo AQN SPORT",
+    old: "R$ 90,00",
+    price: "R$ 53,00",
+    off: "41% OFF",
+    store: "Shopee",
+    tag: "Achadinho",
+    link: "https://s.shopee.com.br/7fZqVt4quO?lp=aff",
   },
   {
     image: airfryerImage,
-    name: "Air fryer compacta",
+    name: "Fritadeira Elétrica Air Fryer 4L Compacta Antiaderente",
     old: "R$ 499,90",
     price: "R$ 329,90",
     off: "34% OFF",
-    store: "Marketplace",
-    link: "#",
+    store: "Amazon",
+    tag: "Menor Preço",
+    link: LINKS.whatsappGerais,
   },
   {
     image: speakerImage,
-    name: "Caixa de som portátil",
+    name: "Caixa de Som Portátil Bluetooth Resistente à Água",
     old: "R$ 119,90",
     price: "R$ 69,90",
     off: "41% OFF",
-    store: "Loja parceira",
-    link: "#",
-  },
-  {
-    image: tumblerImage,
-    name: "Copo térmico",
-    old: "R$ 79,90",
-    price: "R$ 49,90",
-    off: "37% OFF",
-    store: "Marketplace",
-    link: "#",
+    store: "Shopee",
+    tag: "Achadinho",
+    link: LINKS.whatsappGerais,
   },
 ];
 
@@ -129,7 +136,11 @@ function CTA({
 }) {
   return (
     <Button asChild variant="cta" size="lg" className={`cta ${className}`}>
-      <a href={LINKS.offers}>
+      <a
+        href={LINKS.whatsappGerais}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         {flame && <Flame />}
         {children}
         <ArrowRight />
@@ -215,32 +226,82 @@ function DealMessage({ second = false }: { second?: boolean }) {
   );
 }
 
+export function ChannelSelection({ idPrefix = "hero" }: { idPrefix?: string }) {
+  return (
+    <>
+      <div className="channel-selection">
+        <div className="primary-channel-wrapper">
+          <span className="channel-badge">CANAL MAIS POPULAR</span>
+          <a
+            id={`btn-whatsapp-${idPrefix}`}
+            href={LINKS.whatsappGerais}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group-btn group-btn-whatsapp primary-channel-btn"
+          >
+            <MessageCircle className="group-btn-icon" strokeWidth={2.5} />
+            <div className="group-btn-content">
+              <span className="group-btn-main">ENTRAR NO GRUPO</span>
+              <span className="group-btn-sub">WhatsApp • Ofertas Gerais</span>
+            </div>
+            <ArrowRight className="group-btn-arrow" />
+          </a>
+        </div>
+
+        <div className="secondary-channels">
+          <span className="secondary-channels-label">Prefere outro canal?</span>
+          <div className="secondary-channels-links">
+            <a
+              id={`btn-telegram-${idPrefix}-gerais`}
+              href={LINKS.telegramGerais}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="secondary-channel-btn"
+            >
+              <Send className="secondary-btn-icon" />
+              <span>Telegram Geral</span>
+            </a>
+            <span className="secondary-dot" aria-hidden="true">
+              ·
+            </span>
+            <a
+              id={`btn-telegram-${idPrefix}-tech`}
+              href={LINKS.telegramTech}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="secondary-channel-btn"
+            >
+              <Send className="secondary-btn-icon" />
+              <span>Telegram Tech</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div className="trust-badge">
+        <ShieldCheck className="trust-badge-icon" />
+        <span>🔒 Só moderadores enviam links — 100% verificado.</span>
+      </div>
+    </>
+  );
+}
+
 export function Hero() {
   return (
     <section id="top" className="hero">
       <div className="container hero-grid">
         <div className="hero-copy">
           <h1>
-            A GENTE <em>GARIMPA.</em>
+            <span className="hero-line">
+              A GENTE <em>GARIMPA.</em>
+            </span>
             <br />
-            VOCÊ <span>APROVEITA.</span>
+            <span className="hero-line">
+              VOCÊ <span className="hero-accent">APROVEITA.</span>
+            </span>
           </h1>
           <p>Ofertas, cupons e achadinhos, sem você precisar procurar.</p>
-          <CTA flame>ENTRAR NO GRUPO</CTA>
-          <ul className="hero-bullets" aria-label="Benefícios do grupo">
-            <li>
-              <Check className="bullet-icon" />
-              <span>100% gratuito</span>
-            </li>
-            <li>
-              <Check className="bullet-icon" />
-              <span>Sem cadastro</span>
-            </li>
-            <li>
-              <Check className="bullet-icon" />
-              <span>Você decide o que comprar</span>
-            </li>
-          </ul>
+          <ChannelSelection idPrefix="hero" />
         </div>
       </div>
       <MarketplaceMarquee />
@@ -311,191 +372,96 @@ export function SolutionCards() {
   );
 }
 
-export function OfferPreview() {
-  return (
-    <section id="ofertas" className="section preview-section">
-      <div className="container preview-grid">
-        <div className="preview-action-column">
-          <span className="section-index">Direto no celular</span>
-
-          <div className="mini-steps" aria-label="Como funciona o grupo">
-            <div className="mini-step">
-              <Smartphone className="mini-step-icon" />
-              <span>Você recebe</span>
-            </div>
-            <ArrowRight className="mini-step-arrow" />
-            <div className="mini-step">
-              <Eye className="mini-step-icon" />
-              <span>Olha</span>
-            </div>
-            <ArrowRight className="mini-step-arrow" />
-            <div className="mini-step">
-              <Check className="mini-step-icon" />
-              <span>Decide</span>
-            </div>
-          </div>
-
-          <div className="channel-selection">
-            <div className="primary-channel-wrapper">
-              <span className="channel-badge">CANAL MAIS POPULAR</span>
-              <a
-                id="btn-whatsapp-ofertas-gerais"
-                href={LINKS.whatsappGerais}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group-btn group-btn-whatsapp primary-channel-btn"
-              >
-                <MessageCircle className="group-btn-icon" strokeWidth={2.5} />
-                <div className="group-btn-content">
-                  <span className="group-btn-main">ENTRAR NO GRUPO</span>
-                  <span className="group-btn-sub">WhatsApp • Ofertas Gerais</span>
-                </div>
-                <ArrowRight className="group-btn-arrow" />
-              </a>
-            </div>
-
-            <div className="secondary-channels">
-              <span className="secondary-channels-label">Prefere outro canal?</span>
-              <div className="secondary-channels-links">
-                <a
-                  id="btn-telegram-ofertas-gerais"
-                  href={LINKS.telegramGerais}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="secondary-channel-btn"
-                >
-                  <Send className="secondary-btn-icon" />
-                  <span>Telegram Geral</span>
-                </a>
-                <span className="secondary-dot" aria-hidden="true">
-                  ·
-                </span>
-                <a
-                  id="btn-telegram-ofertas-tech"
-                  href={LINKS.telegramTech}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="secondary-channel-btn"
-                >
-                  <Send className="secondary-btn-icon" />
-                  <span>Telegram Tech</span>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div className="trust-badge">
-            <ShieldCheck className="trust-badge-icon" />
-            <span>🔒 Só moderadores enviam links — 100% verificado.</span>
-          </div>
-        </div>
-        <div className="message-stack" aria-label="Exemplos reais de ofertas no grupo">
-          <DealMessage />
-          <DealMessage second />
-        </div>
-      </div>
-    </section>
-  );
-}
-
-export function ComparisonSection() {
-  const without = [
-    "Abrir várias lojas",
-    "Procurar preços",
-    "Procurar cupons",
-    "Comparar produtos",
-    "Descobrir se apareceu promoção",
-  ];
-  const withAt = ["Receber", "Conferir", "Aproveitar se quiser"];
-  return (
-    <section className="section comparison">
-      <div className="container">
-        <div className="section-heading centered inverse">
-          <span className="section-index">O jeito mais prático</span>
-          <h2>
-            Menos tempo procurando.
-            <br />
-            <span>Mais tempo aproveitando.</span>
-          </h2>
-        </div>
-        <div className="compare-grid">
-          <div className="compare-list muted-list">
-            <h3>Sem AT promo</h3>
-            {without.map((x) => (
-              <div key={x}>
-                <Search />
-                {x}
-              </div>
-            ))}
-          </div>
-          <div className="compare-list active-list">
-            <div className="recommended">MAIS PRÁTICO</div>
-            <h3>Com AT promo</h3>
-            {withAt.map((x, i) => (
-              <div key={x}>
-                {i === 0 ? <Smartphone /> : i === 1 ? <Search /> : <Check />}
-                {x}
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 export function OfferCard({ offer }: { offer: (typeof offers)[number] }) {
-  const content = (
-    <>
-      <div className="offer-image">
-        <img loading="lazy" src={offer.image} alt={offer.name} width={768} height={768} />
-        <span>{offer.off}</span>
-      </div>
-      <div className="offer-info">
-        <small>{offer.store}</small>
-        <h3>{offer.name}</h3>
-        <s>{offer.old}</s>
-        <strong>{offer.price}</strong>
-      </div>
-    </>
-  );
-
   return (
     <article className="offer-card">
-      {offer.link && offer.link !== "#" ? (
+      <div className="offer-image">
+        <img loading="lazy" src={offer.image} alt={offer.name} width={768} height={768} />
+        <span className="offer-discount-badge">{offer.off}</span>
+        {offer.tag && <span className="offer-tag-badge">{offer.tag}</span>}
+      </div>
+      <div className="offer-info">
+        <div className="offer-store-row">
+          <span className="offer-store-pill">{offer.store}</span>
+          <span className="offer-verified-badge">
+            <Check className="offer-check-icon" /> Verificado
+          </span>
+        </div>
+        <h3>{offer.name}</h3>
+        <div className="offer-price-box">
+          <s>{offer.old}</s>
+          <strong>{offer.price}</strong>
+        </div>
         <a
-          href={offer.link}
+          href={LINKS.whatsappGerais}
           target="_blank"
           rel="noopener noreferrer"
-          className="offer-card-link"
-          style={{ textDecoration: "none", color: "inherit", display: "block" }}
+          className="offer-action-btn"
         >
-          {content}
+          <span>Pegar no WhatsApp</span>
+          <ExternalLink className="offer-action-icon" />
         </a>
-      ) : (
-        content
-      )}
+      </div>
     </article>
   );
 }
 
-function OffersShowcase() {
+export function RealOffersSection() {
   return (
-    <section className="section showcase">
+    <section id="ofertas" className="section showcase real-offers-section">
       <div className="container">
-        <div className="section-heading">
+        <div className="section-heading centered">
           <h2>
-            Olha o que a gente pode encontrar <span>👀</span>
+            Últimos Achadinhos & Ofertas Reais <span>🔥</span>
           </h2>
-          <p>Produtos e valores ilustrativos. As oportunidades reais variam ao longo do dia.</p>
+          <p>
+            Links diretos, cupons ativos e oportunidades reais selecionadas pela nossa moderação.
+          </p>
         </div>
+
+        <div className="real-offers-trust-bar">
+          <div className="trust-pill">
+            <span className="live-dot" />
+            <span>
+              <strong>Ao vivo:</strong> novas ofertas hoje
+            </span>
+          </div>
+          <div className="trust-pill">
+            <ShieldCheck className="trust-pill-icon" />
+            <span>
+              <strong>100% Verificado:</strong> lojas oficiais
+            </span>
+          </div>
+          <div className="trust-pill">
+            <Tag className="trust-pill-icon" />
+            <span>
+              <strong>Cupons testados</strong> antes do envio
+            </span>
+          </div>
+        </div>
+
         <div className="offers-grid">
           {offers.map((offer) => (
             <OfferCard key={offer.name} offer={offer} />
           ))}
         </div>
-        <div className="center-cta">
-          <CTA flame>ENTRAR NO GRUPO</CTA>
+
+        <div className="group-preview-callout">
+          <div className="group-preview-content">
+            <span className="group-preview-badge">ALERTA EM TEMPO REAL</span>
+            <h3>Quer receber as ofertas antes de todo mundo?</h3>
+            <p>
+              As melhores promoções e cupons esgotam em poucos minutos. No nosso grupo VIP do WhatsApp e Telegram você recebe os links verificados direto no celular assim que o preço cai!
+            </p>
+            <ChannelSelection idPrefix="ofertas-real" />
+          </div>
+          <div className="group-preview-stack">
+            <span className="preview-floating-label">📲 Como a notificação chega no seu celular:</span>
+            <div className="message-stack" aria-label="Exemplos reais de alertas no grupo">
+              <DealMessage />
+              <DealMessage second />
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -622,8 +588,7 @@ export function ATPromoLanding() {
       <Header />
       <main>
         <Hero />
-        <OfferPreview />
-        <OffersShowcase />
+        <RealOffersSection />
         <HowItWorks />
         <FAQ />
       </main>
