@@ -290,8 +290,8 @@ export function Hero() {
       <div className="container hero-grid">
         <div className="hero-copy">
           <h1>
-            Games, tecnologia e outras formas de{" "}
-            <span className="hero-accent">torrar dinheiro sem culpa.</span>
+            Games, tecnologia, hardware, acessórios{" "}
+            <span className="hero-accent">e muito mais!</span>
           </h1>
           <p>Pra que juízo quando existe promoção?</p>
           <ChannelSelection idPrefix="hero" />
