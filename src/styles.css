@@ -60,7 +60,7 @@
   --cta: oklch(0.82 0.17 76);
   --cta-foreground: oklch(0.16 0.012 70);
   --cta-hover: oklch(0.76 0.18 68);
-  --blue-deep: oklch(0.16 0.012 70);
+  --blue-deep: oklch(0.18 0.075 255);
   --blue-soft: oklch(0.91 0.07 74);
   --blue-wash: oklch(0.955 0.035 78);
   --yellow: oklch(0.84 0.17 80);
@@ -238,28 +238,98 @@ p {
 }
 
 .hero {
-  min-height: 700px;
+  min-height: 620px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 110px 0 0;
+  padding: 76px 0 0;
   position: relative;
   overflow: hidden;
   color: var(--primary-foreground);
-  background: var(--blue-deep);
+  background: 
+    radial-gradient(circle 650px at 85% 15%, rgba(255, 107, 0, 0.22) 0%, transparent 70%),
+    radial-gradient(circle 550px at 12% 40%, rgba(14, 165, 233, 0.18) 0%, transparent 65%),
+    radial-gradient(ellipse 90% 60% at 50% 100%, rgba(249, 87, 0, 0.14) 0%, transparent 60%),
+    linear-gradient(180deg, #050711 0%, #080d20 50%, #050814 100%);
 }
 .hero::before {
   content: "";
   position: absolute;
-  width: 720px;
-  height: 720px;
-  border: 120px solid color-mix(in oklab, var(--primary) 30%, transparent);
-  border-radius: 50%;
-  right: -180px;
-  top: 30px;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(56, 189, 248, 0.09) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(56, 189, 248, 0.09) 1px, transparent 1px);
+  background-size: 36px 36px;
+  pointer-events: none;
+  mask-image: radial-gradient(ellipse 85% 75% at 50% 45%, black 40%, transparent 85%);
+  -webkit-mask-image: radial-gradient(ellipse 85% 75% at 50% 45%, black 40%, transparent 85%);
 }
 .hero::after {
-  display: none;
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(ellipse 60% 25% at 50% 0%, rgba(56, 189, 248, 0.14), transparent 70%),
+    linear-gradient(180deg, transparent 65%, rgba(5, 7, 17, 0.85) 100%);
+  pointer-events: none;
+}
+.hero-tech-hud {
+  position: absolute;
+  pointer-events: none;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+}
+.hero-tech-hud::before {
+  content: "";
+  position: absolute;
+  top: 96px;
+  left: 28px;
+  width: 120px;
+  height: 120px;
+  border-top: 1.5px solid rgba(56, 189, 248, 0.25);
+  border-left: 1.5px solid rgba(56, 189, 248, 0.25);
+  opacity: 0.65;
+}
+.hero-tech-hud::after {
+  content: "";
+  position: absolute;
+  bottom: 70px;
+  right: 28px;
+  width: 120px;
+  height: 120px;
+  border-bottom: 1.5px solid rgba(255, 107, 0, 0.28);
+  border-right: 1.5px solid rgba(255, 107, 0, 0.28);
+  opacity: 0.65;
+}
+.hero-tech-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 13px;
+  border-radius: 9999px;
+  background: rgba(14, 165, 233, 0.1);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #38bdf8;
+  margin-bottom: 12px;
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.15);
+  backdrop-filter: blur(8px);
+}
+.hero-tech-badge .tech-pulse {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 10px #22c55e;
+  animation: pulse-dot 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.85); }
 }
 .hero-grid {
   position: relative;
@@ -267,9 +337,9 @@ p {
   display: grid;
   grid-template-columns: 100%;
   max-width: 800px;
-  margin: auto;
+  margin: 12px auto auto;
   align-items: center;
-  padding-bottom: 48px;
+  padding-bottom: 36px;
 }
 
 /* Marketplace Infinite Marquee Strip */
@@ -410,9 +480,17 @@ p {
   width: 18px;
 }
 .hero h1 {
-  font-size: clamp(1.9rem, 4vw, 3.25rem);
-  line-height: 1.1;
-  margin-bottom: 20px;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.3vw, 3.4rem);
+  line-height: 1.06;
+  letter-spacing: -0.025em;
+  text-transform: uppercase;
+  margin-top: 0;
+  margin-bottom: 8px;
+  background: linear-gradient(180deg, #ffffff 20%, #e2e8f0 70%, #94a3b8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.65));
 }
 .hero h1 .hero-line {
   display: inline-block;
@@ -425,7 +503,11 @@ p {
 }
 .hero h1 span.hero-accent,
 .hero h1 span:not(.hero-line) {
-  color: var(--cta);
+  display: inline;
+  background: linear-gradient(90deg, #ff4d00 0%, #ff6b00 40%, #ffa100 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 20px rgba(255, 107, 0, 0.7)) drop-shadow(0 0 36px rgba(255, 77, 0, 0.35));
 }
 .hero-copy > p {
   max-width: 610px;
@@ -435,10 +517,11 @@ p {
 }
 .hero-copy .channel-selection {
   max-width: 520px;
-  margin: 22px 0 12px;
+  margin: 22px 0 10px;
 }
 .hero-copy .trust-badge {
-  margin-bottom: 22px;
+  margin-top: 6px;
+  margin-bottom: 14px;
 }
 .hero-copy .cta {
   margin-top: 10px;
@@ -812,7 +895,14 @@ p {
   transform: translateX(4px);
 }
 
-/* Destaque especial do botão WhatsApp Hero */
+.primary-buttons-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+/* Destaque especial do botão WhatsApp Hero (Principal) */
 #btn-whatsapp-hero {
   position: relative;
   min-height: 74px;
@@ -897,17 +987,95 @@ p {
 }
 
 #btn-whatsapp-hero .group-btn-sub {
-  font-size: 0.86rem;
-  font-weight: 700;
-  opacity: 0.98;
-  letter-spacing: 0.01em;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+  display: none !important;
 }
 
 #btn-whatsapp-hero .group-btn-arrow {
   width: 26px;
   height: 26px;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25));
+}
+
+/* Sub-opção: Ofertas Gerais (#btn-whatsapp-hero-2) */
+#btn-whatsapp-hero-2 {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  min-height: 48px;
+  padding: 10px 18px;
+  border-radius: 10px;
+  background: rgba(37, 211, 102, 0.12);
+  border: 1.5px solid rgba(37, 211, 102, 0.45);
+  color: #25d366 !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  animation: none;
+  overflow: hidden;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(8px);
+}
+
+#btn-whatsapp-hero-2:hover {
+  background: rgba(37, 211, 102, 0.22);
+  border-color: #25d366;
+  color: #ffffff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.25);
+}
+
+#btn-whatsapp-hero-2:hover .group-btn-arrow {
+  transform: translateX(3px);
+}
+
+#btn-whatsapp-hero-2:active {
+  transform: translateY(0);
+}
+
+#btn-whatsapp-hero-2::after {
+  display: none;
+}
+
+#btn-whatsapp-hero-2 .group-btn-icon {
+  width: 20px;
+  height: 20px;
+  filter: none;
+  color: inherit;
+  flex-shrink: 0;
+}
+
+#btn-whatsapp-hero-2 .group-btn-content {
+  margin: 0;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+#btn-whatsapp-hero-2 .group-btn-main {
+  font-size: 0.95rem;
+  font-weight: 750;
+  letter-spacing: 0.02em;
+  text-shadow: none;
+  color: inherit;
+  text-align: center;
+}
+
+#btn-whatsapp-hero-2 .group-btn-sub {
+  display: none !important;
+}
+
+#btn-whatsapp-hero-2 .group-btn-arrow {
+  width: 18px;
+  height: 18px;
+  filter: none;
+  opacity: 0.85;
+  color: inherit;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
 }
 .secondary-channels {
   display: flex;
@@ -961,21 +1129,21 @@ p {
 .trust-badge {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  margin-top: 6px;
-  padding: 8px 14px;
+  gap: 6px;
+  margin-top: 4px;
+  padding: 4px 10px;
   border-radius: 9999px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  color: rgba(255, 255, 255, 0.92);
-  font-size: 0.82rem;
-  font-weight: 600;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.72rem;
+  font-weight: 500;
   width: fit-content;
   max-width: 100%;
 }
 .trust-badge-icon {
-  width: 17px;
-  height: 17px;
+  width: 13px;
+  height: 13px;
   color: #34d399;
   flex-shrink: 0;
 }
@@ -1924,7 +2092,17 @@ footer {
   }
   .hero {
     min-height: auto;
-    padding-top: 125px;
+    padding-top: 84px;
+  }
+  .hero-copy {
+    text-align: center;
+  }
+  .hero h1 {
+    text-align: center;
+  }
+  .hero-copy > p {
+    text-align: center;
+    margin-inline: auto;
   }
   .hero-grid,
   .preview-grid,
@@ -1965,11 +2143,15 @@ footer {
     font-size: 1rem;
   }
   .hero {
-    padding: 105px 0 0;
+    padding: 78px 0 0;
+  }
+  .hero-tech-hud {
+    display: none;
   }
   .hero-grid {
-    gap: 20px;
-    padding-bottom: 24px;
+    gap: 16px;
+    margin-top: 0;
+    padding-bottom: 20px;
   }
   .marketplace-marquee-strip {
     padding: 12px 0 14px;
@@ -1995,11 +2177,15 @@ footer {
   .hero h1 {
     font-size: clamp(1.45rem, 6.2vw, 2.15rem);
     line-height: 1.12;
-    margin-bottom: 16px;
+    margin-top: 0;
+    margin-bottom: 6px;
+    text-align: center;
   }
   .hero-copy > p {
     font-size: 1.02rem;
     margin-bottom: 20px;
+    text-align: center;
+    margin-inline: auto;
   }
   .hero-copy .cta {
     width: 100%;
@@ -2047,6 +2233,17 @@ footer {
   #btn-whatsapp-hero .group-btn-sub {
     font-size: 0.76rem;
   }
+  #btn-whatsapp-hero-2 {
+    min-height: 44px;
+    padding: 8px 14px;
+  }
+  #btn-whatsapp-hero-2 .group-btn-icon {
+    width: 18px;
+    height: 18px;
+  }
+  #btn-whatsapp-hero-2 .group-btn-main {
+    font-size: 0.88rem;
+  }
   .secondary-channels {
     flex-direction: column;
     align-items: flex-start;
@@ -2055,9 +2252,17 @@ footer {
   .secondary-channels-links {
     flex-wrap: wrap;
   }
+  .hero-copy .trust-badge {
+    margin-inline: auto;
+  }
   .trust-badge {
-    font-size: 0.76rem;
-    padding: 6px 10px;
+    font-size: 0.68rem;
+    padding: 3px 8px;
+    gap: 5px;
+  }
+  .trust-badge-icon {
+    width: 12px;
+    height: 12px;
   }
   .three-grid,
   .category-grid,

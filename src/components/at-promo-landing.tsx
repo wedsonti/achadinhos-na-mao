@@ -27,8 +27,6 @@ import {
 import shoeImage from "@/assets/offer-running-shoe.jpg";
 import earbudsImage from "@/assets/offer-earbuds.jpg";
 import toolsImage from "@/assets/offer-tools.jpg";
-import airfryerImage from "@/assets/offer-airfryer.jpg";
-import speakerImage from "@/assets/offer-speaker.jpg";
 import tumblerImage from "@/assets/offer-tumbler.jpg";
 import galaxyS25Image from "@/assets/offer-galaxy-s25-ultra.jpg";
 import fitnessGraceImage from "@/assets/offer-fitness-grace.jpg";
@@ -38,7 +36,7 @@ import { MarketplaceMarquee } from "./marketplace-marquee";
 const LINKS = {
   offers: "#ofertas",
   instagram: "https://www.instagram.com/atpromoo?stkn=MXU0bnR6cnYwYnhnag==",
-  whatsapp: "https://chat.whatsapp.com/IDN79MDjG97Dj8NqsvKlqh",
+  whatsapp: "https://chat.whatsapp.com/CPcYsxtkFda2xcNaM5rpmM",
   telegram: "https://t.me/ATPROMOC",
   whatsappGerais: "https://chat.whatsapp.com/IDN79MDjG97Dj8NqsvKlqh",
   telegramGerais: "https://t.me/ATPROMOGERAIS",
@@ -87,26 +85,6 @@ const offers = [
     tag: "Achadinho",
     link: "https://s.shopee.com.br/7fZqVt4quO?lp=aff",
   },
-  {
-    image: airfryerImage,
-    name: "Fritadeira Elétrica Air Fryer 4L Compacta Antiaderente",
-    old: "R$ 499,90",
-    price: "R$ 329,90",
-    off: "34% OFF",
-    store: "Amazon",
-    tag: "Menor Preço",
-    link: LINKS.whatsappGerais,
-  },
-  {
-    image: speakerImage,
-    name: "Caixa de Som Portátil Bluetooth Resistente à Água",
-    old: "R$ 119,90",
-    price: "R$ 69,90",
-    off: "41% OFF",
-    store: "Shopee",
-    tag: "Achadinho",
-    link: LINKS.whatsappGerais,
-  },
 ];
 
 function Logo({ inverse = false }: { inverse?: boolean }) {
@@ -119,8 +97,8 @@ function Logo({ inverse = false }: { inverse?: boolean }) {
       <img
         src={logoPng}
         alt="AT Promoções — Ofertas que valem a pena!"
-        width={1191}
-        height={1034}
+        width={995}
+        height={943}
         referrerPolicy="no-referrer"
       />
     </a>
@@ -234,24 +212,41 @@ export function ChannelSelection({ idPrefix = "hero" }: { idPrefix?: string }) {
       <div className="channel-selection">
         <div className="primary-channel-wrapper">
           <span className="channel-badge">CANAL MAIS POPULAR</span>
-          <a
-            id={`btn-whatsapp-${idPrefix}`}
-            href={LINKS.whatsappGerais}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group-btn group-btn-whatsapp primary-channel-btn"
-          >
-            <MessageCircle className="group-btn-icon" strokeWidth={2.5} />
-            <div className="group-btn-content">
-              <span className="group-btn-main">ENTRAR NO GRUPO</span>
-              <span className="group-btn-sub">WhatsApp • Ofertas Gerais</span>
-            </div>
-            <ArrowRight className="group-btn-arrow" />
-          </a>
+          <div className="primary-buttons-stack">
+            <a
+              id={`btn-whatsapp-${idPrefix}`}
+              href={LINKS.whatsapp}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group-btn group-btn-whatsapp primary-channel-btn"
+            >
+              <MessageCircle className="group-btn-icon" strokeWidth={2.5} />
+              <div className="group-btn-content">
+                <span className="group-btn-main">ENTRAR NO GRUPO</span>
+                {idPrefix !== "hero" && (
+                  <span className="group-btn-sub">WhatsApp • Ofertas Gerais</span>
+                )}
+              </div>
+              <ArrowRight className="group-btn-arrow" />
+            </a>
+            <a
+              id={`btn-whatsapp-${idPrefix}-2`}
+              href={LINKS.whatsappGerais}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group-btn group-btn-whatsapp primary-channel-btn group-btn-sub-option"
+            >
+              <MessageCircle className="group-btn-icon" strokeWidth={2.2} />
+              <div className="group-btn-content">
+                <span className="group-btn-main">Ofertas gerais</span>
+              </div>
+              <ArrowRight className="group-btn-arrow" />
+            </a>
+          </div>
         </div>
 
         <div className="secondary-channels">
-          <span className="secondary-channels-label">Prefere outro canal?</span>
+          <span className="secondary-channels-label">Ofertas saem primeiro no Telegram!</span>
           <div className="secondary-channels-links">
             <a
               id={`btn-telegram-${idPrefix}-gerais`}
@@ -291,18 +286,14 @@ export function ChannelSelection({ idPrefix = "hero" }: { idPrefix?: string }) {
 export function Hero() {
   return (
     <section id="top" className="hero">
+      <div className="hero-tech-hud" aria-hidden="true" />
       <div className="container hero-grid">
         <div className="hero-copy">
           <h1>
-            <span className="hero-line">
-              A GENTE <em>GARIMPA.</em>
-            </span>
-            <br />
-            <span className="hero-line">
-              VOCÊ <span className="hero-accent">APROVEITA.</span>
-            </span>
+            Games, tecnologia e outras formas de{" "}
+            <span className="hero-accent">torrar dinheiro sem culpa.</span>
           </h1>
-          <p>Ofertas, cupons e achadinhos, sem você precisar procurar.</p>
+          <p>Pra que juízo quando existe promoção?</p>
           <ChannelSelection idPrefix="hero" />
         </div>
       </div>
@@ -453,7 +444,7 @@ export function RealOffersSection() {
             <span className="group-preview-badge">ALERTA EM TEMPO REAL</span>
             <h3>Quer receber as ofertas antes de todo mundo?</h3>
             <p>
-              As melhores promoções e cupons esgotam em poucos minutos. No nosso grupo VIP do WhatsApp e Telegram você recebe os links verificados direto no celular assim que o preço cai!
+              As melhores promoções e cupons esgotam em poucos minutos. Recomendamos o Telegram pois é mais eficiente na entrega da oferta.
             </p>
             <ChannelSelection idPrefix="ofertas-real" />
           </div>
@@ -612,7 +603,7 @@ export function DiscreteAudioButton() {
     <>
       <audio
         ref={audioRef}
-        src="/audio/multimusicas-guitar-br-474631.mp3"
+        src="/audio/nova trilha.mp3"
         loop
         preload="auto"
         onPlay={() => setIsPlaying(true)}
