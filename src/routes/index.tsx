@@ -7,16 +7,17 @@ import { ATPromoLanding } from "@/components/at-promo-landing";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "AT promo | Ofertas, cupons e achadinhos" },
+      { title: "AT promo | Games, tecnologia, hardware e promoções" },
       {
         name: "description",
         content:
-          "O AT promo garimpa ofertas, cupons e achadinhos para você receber oportunidades direto no celular. É grátis.",
+          "Games, tecnologia, hardware, acessórios e muito mais! Receba ofertas reais, cupons e achadinhos verificados direto no WhatsApp e Telegram.",
       },
-      { property: "og:title", content: "AT promo — A gente garimpa. Você aproveita." },
+      { property: "og:site_name", content: "AT promo" },
+      { property: "og:title", content: "AT promo — Games, Tecnologia & Achadinhos" },
       {
         property: "og:description",
-        content: "Receba ofertas, cupons e achadinhos sem precisar procurar o dia inteiro.",
+        content: "As melhores promoções e cupons esgotam em poucos minutos. Receba os links verificados direto no seu celular!",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://atpromo.vercel.app/" },
@@ -25,12 +26,12 @@ export const Route = createFileRoute("/")({
       { property: "og:image:type", content: "image/png" },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
-      { property: "og:image:alt", content: "AT promo - Ofertas que valem a pena! Grupo VIP no WhatsApp e Telegram" },
+      { property: "og:image:alt", content: "AT promo - Games, Tecnologia e Achadinhos" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "AT promo — A gente garimpa. Você aproveita." },
+      { name: "twitter:title", content: "AT promo — Games, Tecnologia & Achadinhos" },
       {
         name: "twitter:description",
-        content: "Receba ofertas, cupons e achadinhos sem precisar procurar o dia inteiro.",
+        content: "As melhores promoções e cupons esgotam em poucos minutos. Receba os links verificados direto no seu celular!",
       },
       { property: "twitter:image", content: "https://atpromo.vercel.app/og-banner.png" },
       { name: "twitter:image", content: "https://atpromo.vercel.app/og-banner.png" },
